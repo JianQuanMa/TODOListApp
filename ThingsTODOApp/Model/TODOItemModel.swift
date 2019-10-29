@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+struct TODOItem: Codable{
+    var  title: String
+    var completed: Bool
+    var createdAt: Date
+    var itemIdentifier: UUID
+    
+    func saveItem(){
+        
+    }
+    func deleteItem(){
+        
+    }
+    func markAsCompleted(){
+        
+    }
+}
