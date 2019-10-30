@@ -48,14 +48,14 @@ public class DataManager{
     }
     //load data as it is
     static func load(with fileName: String) -> Data?{
-           let url = getDocumentDirectory().appendingPathComponent(fileName, isDirectory: false)
-           guard !FileManager.default.fileExists(atPath: url.path) else{fatalError("File not exist!ed at \(url.path)")}
-           if let data = FileManager.default.contents(atPath: url.path){
-              return data
-           }else{
-               fatalError("data unavailable!")
-           }
-       }
+        let url = getDocumentDirectory().appendingPathComponent(fileName, isDirectory: false)
+        guard !FileManager.default.fileExists(atPath: url.path) else{fatalError("File not exist!ed at \(url.path)")}
+        if let data = FileManager.default.contents(atPath: url.path){
+            return data
+        }else{
+            fatalError("data unavailable!")
+        }
+    }
     
     //load all files
     static func loaddAll<T: Decodable>(_ type: T) -> [T]{
@@ -69,7 +69,18 @@ public class DataManager{
             return modelObjects
         }catch{
             fatalError("could not load files")
-                }
+        }
+    }
+    //delete a file
+    static func delete(_ fileName: String){
+        let url = getDocumentDirectory().appendingPathComponent(fileName, isDirectory: false)
+        if FileManager.default.fileExists(atPath: url.path){
+            do{
+                try FileManager.default.fileExists(atPath: url.path)
+            }catch{
+                fatalError(error.localizedDescription)
+            }
+        }
     }
     
 }
